@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
 
+// just a comment
 const app = express();
 const PORT = 6969;
 const DATA_FILE = path.join(__dirname, "data.json");
