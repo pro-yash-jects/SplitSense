@@ -89,7 +89,47 @@ button.secondary{background:#f3f4f6;color:#111;box-shadow:none}
 .error{position:fixed;right:18px;bottom:18px;background:#fee2e2;color:#7f1d1d;padding:10px;border-radius:6px}
 .foot{margin-top:14px;color:var(--muted)}
 
+/* Dashboard - All Debts */
+.debts-list{display:flex;flex-direction:column;gap:8px}
+.debt-row{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;background:linear-gradient(180deg,#ffffff,#fbfbff);border-radius:8px;box-shadow:0 2px 8px rgba(16,24,40,0.04)}
+.debt-info{display:flex;align-items:center;gap:10px;flex:1}
+.debt-ower{font-weight:600}
+.debt-arrow{color:var(--muted)}
+.debt-receiver{font-weight:600}
+.debt-amount{font-weight:700;color:#0f172a;font-size:15px}
+
+/* Member Filter View */
+.filter-controls{margin-bottom:14px}
+.member-filter-select{width:100%;max-width:300px}
+.member-debts-view{display:flex;flex-direction:column;gap:16px}
+.calculations-summary h3{margin:0 0 12px 0;font-size:15px;font-weight:600}
+.summary-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.summary-card{padding:14px;border-radius:10px;display:flex;flex-direction:column;gap:6px;border:2px solid}
+.summary-card.owes{background:#fff5f5;border-color:#fecaca}
+.summary-card.receives{background:#f0fdf4;border-color:#bbf7d0}
+.summary-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.summary-amount{font-size:24px;font-weight:700}
+.summary-card.owes .summary-amount{color:#dc2626}
+.summary-card.receives .summary-amount{color:#16a34a}
+
+/* Member Debts Sections */
+.member-debts-sections{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.debts-section h4{margin:0 0 10px 0;font-size:14px;font-weight:600}
+.colored-debts-list{display:flex;flex-direction:column;gap:8px}
+.debt-item{padding:12px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;border-left:4px solid}
+.debt-item.owes{background:linear-gradient(135deg,#fef2f2,#fff5f5);border-left-color:#dc2626}
+.debt-item.receives{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border-left-color:#16a34a}
+.debt-to{color:#333;font-size:14px}
+.debt-from{color:#333;font-size:14px}
+.debt-value{font-weight:700;font-size:15px}
+.debt-item.owes .debt-value{color:#dc2626}
+.debt-item.receives .debt-value{color:#16a34a}
+.debt-item strong{font-weight:600}
+
 @media (max-width:800px){
   .main-grid{grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
+  .summary-cards{grid-template-columns:1fr}
+  .member-debts-sections{grid-template-columns:1fr}
 }
+

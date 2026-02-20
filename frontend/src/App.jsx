@@ -15,6 +15,7 @@ function App() {
   const [debts, setDebts] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [selectedMember, setSelectedMember] = useState('')
 
   const fetchAll = async () => {
     try {
@@ -154,30 +155,110 @@ function App() {
         </section>
 
         <section className="panel wide">
-          <h2>Debts</h2>
+          <h2>Dashboard - All Debts</h2>
           {loading ? (
             <div>Loading...</div>
           ) : debts.length === 0 ? (
             <div className="muted">No debts</div>
           ) : (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Ower</th>
-                  <th>Receiver</th>
-                  <th>Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                {debts.map((d, i) => (
-                  <tr key={i}>
-                    <td>{d.ower}</td>
-                    <td>{d.receiver}</td>
-                    <td>{Number(d.amount).toFixed(2)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="debts-list">
+              {debts.map((d, i) => (
+                <div key={i} className="debt-row">
+                  <div className="debt-info">
+                    <span className="debt-ower">{d.ower}</span>
+                    <span className="debt-arrow">→</span>
+                    <span className="debt-receiver">{d.receiver}</span>
+                  </div>
+                  <div className="debt-amount">{Number(d.amount).toFixed(2)}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
+
+        <section className="panel wide">
+          <h2>Member Filter View - Individual Calculations</h2>
+          <div className="filter-controls">
+            <select 
+              value={selectedMember} 
+              onChange={(e) => setSelectedMember(e.target.value)}
+              className="member-filter-select"
+            >
+              <option value="">-- Select member to view --</option>
+              {members.map((m) => (
+                <option key={m} value={m}>
+                  {m}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {selectedMember ? (
+            <div className="member-debts-view">
+              <div className="calculations-summary">
+                <h3>{selectedMember}'s Account</h3>
+                <div className="summary-cards">
+                  <div className="summary-card owes">
+                    <div className="summary-label">Total Owes</div>
+                    <div className="summary-amount">
+                      {debts
+                        .filter((d) => d.ower === selectedMember)
+                        .reduce((sum, d) => sum + Number(d.amount), 0)
+                        .toFixed(2)}
+                    </div>
+                  </div>
+                  <div className="summary-card receives">
+                    <div className="summary-label">Total Receives</div>
+                    <div className="summary-amount">
+                      {debts
+                        .filter((d) => d.receiver === selectedMember)
+                        .reduce((sum, d) => sum + Number(d.amount), 0)
+                        .toFixed(2)}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="member-debts-sections">
+                <div className="debts-section owes-section">
+                  <h4>Owes To Others</h4>
+                  {debts.filter((d) => d.ower === selectedMember).length === 0 ? (
+                    <div className="muted">No debts owed</div>
+                  ) : (
+                    <div className="colored-debts-list">
+                      {debts
+                        .filter((d) => d.ower === selectedMember)
+                        .map((d, i) => (
+                          <div key={i} className="debt-item owes">
+                            <div className="debt-to">{selectedMember} owes <strong>{d.receiver}</strong></div>
+                            <div className="debt-value">{Number(d.amount).toFixed(2)}</div>
+                          </div>
+                        ))}
+                    </div>
+                  )}
+                </div>
+
+                <div className="debts-section receives-section">
+                  <h4>Receives From Others</h4>
+                  {debts.filter((d) => d.receiver === selectedMember).length === 0 ? (
+                    <div className="muted">No debts owed to you</div>
+                  ) : (
+                    <div className="colored-debts-list">
+                      {debts
+                        .filter((d) => d.receiver === selectedMember)
+                        .map((d, i) => (
+                          <div key={i} className="debt-item receives">
+                            <div className="debt-from"><strong>{d.ower}</strong> owes {selectedMember}</div>
+                            <div className="debt-value">{Number(d.amount).toFixed(2)}</div>
+                          </div>
+                        ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="muted">Select a member to see their individual debt calculations</div>
           )}
         </section>
 
