@@ -1,5 +1,40 @@
 {
-    "members":[],
-    "expenses":[],
-    "debts":[]
+  "members": [
+    "yash",
+    "anup",
+    "mayank"
+  ],
+  "expenses": [
+    {
+      "id": 1771578870386,
+      "paidBy": "anup",
+      "amount": 345,
+      "description": "groceries",
+      "date": "2026-02-20T09:14:30.386Z"
+    },
+    {
+      "id": 1771578902628,
+      "paidBy": "mayank",
+      "amount": 34,
+      "description": "na",
+      "date": "2026-02-20T09:15:02.628Z"
+    }
+  ],
+  "debts": [
+    {
+      "ower": "yash",
+      "receiver": "anup",
+      "amount": 172.5
+    },
+    {
+      "ower": "yash",
+      "receiver": "mayank",
+      "amount": 11.333333333333334
+    },
+    {
+      "ower": "anup",
+      "receiver": "mayank",
+      "amount": 11.333333333333334
+    }
+  ]
 }
