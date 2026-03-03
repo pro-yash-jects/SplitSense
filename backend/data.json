@@ -1,8 +1,28 @@
 {
   "members": [
+    "Vishal",
+    "Yash",
+    "Mayank"
   ],
   "expenses": [
+    {
+      "id": 1771916598743,
+      "paidBy": "Yash",
+      "amount": 1000,
+      "description": "expense",
+      "date": "2026-02-24T07:03:18.743Z"
+    }
   ],
   "debts": [
+    {
+      "ower": "Vishal",
+      "receiver": "Yash",
+      "amount": 333.3333333333333
+    },
+    {
+      "ower": "Mayank",
+      "receiver": "Yash",
+      "amount": 333.3333333333333
+    }
   ]
 }

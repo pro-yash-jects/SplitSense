@@ -68,6 +68,10 @@ function App() {
   const addExpense = async (e) => {
     e.preventDefault()
     if (!paidBy || !amount) return
+    if (parseFloat(amount) <= 0) {
+      setError('Amount must be greater than zero')
+      return
+    }
     try {
       const res = await fetch(`${API}/expenses`, {
         method: 'POST',
