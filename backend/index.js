@@ -2,13 +2,19 @@ const express = require("express");
 const fs = require("fs");
 const path = require("path");
 const cors = require("cors");
-
+const dotenv = require("dotenv");
 
 const app = express();
-const PORT = 6969;
+const env = dotenv.config();
+const PORT = process.env.PORT;
 const DATA_FILE = path.join(__dirname, "data.json");
-
-app.use(cors());
+console.log(process.env.FRONTEND)
+app.use(cors(
+  {
+    origin: process.env.FRONTEND
+  }
+  )
+);
 app.use(express.json());
 
 const readDB = () => {

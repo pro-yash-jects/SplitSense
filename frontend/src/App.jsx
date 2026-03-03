@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 
-const API = import.meta.env.BACKEND;
+const API = import.meta.env.VITE_BACKEND;
+console.log('Using backend API at:', API)
 
 function App() {
   const [members, setMembers] = useState([])
