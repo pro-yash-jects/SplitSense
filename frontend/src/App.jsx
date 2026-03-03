@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import dotenv from 'dotenv';
 
-dotenv.config();
-const API = process.env.BACKEND;
+const API = import.meta.env.BACKEND;
 
 function App() {
   const [members, setMembers] = useState([])
@@ -185,8 +183,8 @@ function App() {
         <section className="panel wide">
           <h2>Member Filter View - Individual Calculations</h2>
           <div className="filter-controls">
-            <select 
-              value={selectedMember} 
+            <select
+              value={selectedMember}
               onChange={(e) => setSelectedMember(e.target.value)}
               className="member-filter-select"
             >
