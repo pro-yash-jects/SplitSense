@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import dotenv from 'dotenv';
 
-const API = 'http://localhost:6969'
+dotenv.config();
+const API = process.env.BACKEND;
 
 function App() {
   const [members, setMembers] = useState([])
